@@ -13,24 +13,24 @@ Actual time needed to complete: 30 minutes
 
 ## TASK TWO: Weather (placeholder): As a user of City Explorer, I want to see weather info for the city I searched, so that I know how to pack for an upcoming trip.
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 3hours
 
-Start time: _____
+Start time: 6pm
 
-Finish time: _____
+Finish time: 11pm (not finished)
 
 Actual time needed to complete: _____
 
 
 ### TASK THREE: Errors (revisited): As a user, I want clear messages if something goes wrong so I know if I need to make any changes or try again in a different manner.
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 1hour
 
-Start time: _____
+Start time: 11pm
 
-Finish time: _____
+Finish time: 12pm
 
-Actual time needed to complete: _____
+Actual time needed to complete: 1hour
 
 
 # City Explorer API

@@ -14,7 +14,6 @@ let data = require('./data/weather.json');
 const app = express();
 
 //MIDDLEWARE
-
 app.use(cors());
 
 // DEFINE MY PORT FOR MY SERVER
@@ -57,16 +56,7 @@ app.get('/weather', (request, response, next) => {
   }
 });
 
-// console.log('Search Query:', searchQuery);
-// console.log('Found City:', foundCity);
 
-// // LAB 7: CLASS TO GROOM BULKY DATA
-// class Forecast {
-//   constructor(cityObj) {
-//     this.date = cityObj.valid_date;
-//     this.description = cityObj.weather.description;
-//   }
-// }
 
 
 // CATCH ALL ENDPOINT - needs to be last endpoint defined
@@ -83,3 +73,15 @@ app.use((error, request, response, next) => {
 
 
 
+// console.log('Search Query:', searchQuery);
+// console.log('Found City:', foundCity);
+
+// // LAB 7: CLASS TO GROOM BULKY DATA
+// class Forecast {
+//   constructor(cityObj) {
+//     this.date = cityObj.valid_date;
+//     this.description = cityObj.weather.description;
+//   }
+// }
+
+// weather?searchQuery=paris

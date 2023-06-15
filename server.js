@@ -9,7 +9,9 @@ const cors = require('cors');
 const axios = require('axios');
 
 // DATA JSON TO USE
-let data = require('./data/weather.json');
+
+// let data = require('./data/weather.json');
+
 //creating server using express
 // app === my server
 const app = express();
@@ -22,8 +24,6 @@ const PORT = process.env.PORT || 3002;
 app.listen(PORT, () => console.log(`We are running on ${PORT}!`));
 
 
-
-
 /*
  *** FOR YOUR LAB - WEATHER
  *** http://api.weatherbit.io/v2.0/forecast/daily?key=<your API key>&lat=<from your frontend>&lon=<from your frontend>&days=5&units=I
@@ -34,34 +34,10 @@ app.listen(PORT, () => console.log(`We are running on ${PORT}!`));
  *** images: https://image.tmdb.org/t/p/w500/<poster path>
 */
 
-//***** */ LAB 8: WEATHER API ********////////////
-class Forecast {
-  constructor(cityObj) {
-    this.date = cityObj.data;
-    this.description = cityObj.description;
-  }
-}
-
-app.get('/weather', async (request, response, next) => {
-
-  try {
-    let lat = request.query.lat;
-    let lon = request.query.lon;
-    let weatherURL = `http://api.weatherbit.io/v2.0/forecast/daily?key=${process.env.WEATHER_API_KEY}&lat=${lat}&lon=${lon}`;
-    let weatherDataFromAxios = await axios.get(weatherURL);
-
-    let weatherData = weatherDataFromAxios.data.results.map(cityObj => new Forecast(cityObj));
-
-    response.status(200).send(weatherData);
-  } catch (error) {
-    next(error);
-  }
-});
-
 
 //***** */ LAB 8: MOVIE API ********////////////
-class Movie{
-  constructor(movieObj){
+class Movie {
+  constructor(movieObj) {
     this.title = movieObj.title;
     this.overview = movieObj.overview;
     this.average_votes = movieObj.average_votes;
@@ -74,6 +50,7 @@ class Movie{
   }
 }
 
+///movies?searchQuery=seattle
 app.get('/movies', async (request, response, next) => {
   try {
     let keywordFromFrontTwo = request.query.searchQuery;
@@ -85,6 +62,33 @@ app.get('/movies', async (request, response, next) => {
     next(error);
   }
 });
+
+
+//***** */ LAB 8: WEATHER API ********////////////
+class Forecast {
+  constructor(cityObj) {
+    this.date = cityObj.datetime;
+    this.description = cityObj.weather.description;
+  }
+}
+
+
+app.get('/weather', async (request, response, next) => {
+
+  try {
+    let lat = request.query.lat;
+    let lon = request.query.lon;
+    let weatherURL = `http://api.weatherbit.io/v2.0/forecast/daily?key=${process.env.WEATHER_API_KEY}&lat=${lat}&lon=${lon}`;
+    let weatherDataFromAxios = await axios.get(weatherURL);
+    console.log(weatherDataFromAxios.data);
+    let weatherData = weatherDataFromAxios.data.data.map(cityObj => new Forecast(cityObj));
+
+    response.status(200).send(weatherData);
+  } catch (error) {
+    next(error);
+  }
+});
+
 
 
 

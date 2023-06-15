@@ -6,8 +6,8 @@ const express = require('express');
 require('dotenv').config();
 const cors = require('cors');
 const axios = require('axios');
-const getMovies = require('./data/modules/movies');
-const getWeather = require('./data/modules/weather');
+const getMovies = require('./modules/movies');
+const getWeather = require('./modules/weather');
 
 // DATA JSON TO USE
 // let data = require('./data/weather.json');
